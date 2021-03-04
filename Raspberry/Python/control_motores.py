@@ -16,7 +16,7 @@ def L_Speed(speed):
     if speed > 100:
         speed = 100
     currentLeftSpeed = speed
-    sendCommand = currentLeftSpeed + "a" + currentRightSpeed
+    sendCommand = str(currentLeftSpeed) + "a" + str(currentRightSpeed)
     ser.write(sendCommand.encode('ascii'))
 
 def R_Speed(speed):
@@ -24,7 +24,7 @@ def R_Speed(speed):
     if speed > 100:
         speed = 100
     currentRightSpeed = speed
-    sendCommand = currentLeftSpeed + "a" + currentRightSpeed
+    sendCommand = str(currentLeftSpeed) + "a" + str(currentRightSpeed)
     ser.write(sendCommand.encode('ascii'))
     
 def Direction(difference):

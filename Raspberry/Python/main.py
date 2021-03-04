@@ -14,6 +14,10 @@ Speed = 50
 MotorsSetup()
 BaseSpeed(Speed)
 
+def signal_handler(sig, frame):
+    print('You pressed Ctrl+C!')
+    sys.exit(0)
+
 signal.signal(signal.SIGINT, signal_handler)
 
 frames = [] # stores the video sequence for the demo

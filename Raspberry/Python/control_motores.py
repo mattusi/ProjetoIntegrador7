@@ -12,6 +12,8 @@ def MotorsSetup():
     ser.open()
     
 def L_Speed(speed):
+    global currentRightSpeed
+    global currentLeftSpeed
     speed = abs(speed)
     if speed > 100:
         speed = 100
@@ -21,6 +23,8 @@ def L_Speed(speed):
     ser.write(sendCommand.encode('ascii'))
 
 def R_Speed(speed):
+    global currentRightSpeed
+    global currentLeftSpeed
     speed = abs(speed)
     if speed > 100:
         speed = 100

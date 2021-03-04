@@ -1,4 +1,4 @@
-import Serial
+import serial
 
 SPEED = 10
 ser = serial.Serial('/dev/ttyS0')

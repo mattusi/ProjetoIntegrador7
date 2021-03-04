@@ -18,9 +18,7 @@ def L_Speed(speed):
     if speed > 100:
         speed = 100
     currentLeftSpeed = speed
-    sendCommand = str(currentLeftSpeed) + "a" + str(currentRightSpeed)
-    print(sendCommand)
-    ser.write(sendCommand.encode('ascii'))
+    sendCommand()
 
 def R_Speed(speed):
     global currentRightSpeed
@@ -29,9 +27,8 @@ def R_Speed(speed):
     if speed > 100:
         speed = 100
     currentRightSpeed = speed
-    sendCommand = str(currentLeftSpeed) + "a" + str(currentRightSpeed)
-    print(sendCommand)
-    ser.write(sendCommand.encode('ascii'))
+    sendCommand()
+    
     
 def Direction(difference):
     difference /= 2
@@ -50,3 +47,12 @@ def GetSpeed():
 
 def MotorsStop():
     ser.write('0a0'.encode('ascii'))
+
+def sendCommand():
+    global currentRightSpeed
+    global currentLeftSpeed
+    leftInt = int(currentLeftSpeed)
+    rightInt = int(currentRightSpeed)
+    sendCommand = str(leftInt) + "a" + str(rightInt)
+    print(sendCommand)
+    ser.write(sendCommand.encode('ascii'))

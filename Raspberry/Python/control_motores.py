@@ -31,15 +31,22 @@ def R_Speed(speed):
     
     
 def Direction(difference):
+    global currentRightSpeed
+    global currentLeftSpeed
     difference /= 2
-    L_Speed(SPEED + difference)
-    R_Speed(SPEED - difference)
+    currentLeftSpeed = SPEED + difference
+    currentRightSpeed = SPEED - difference
+    sendCommand()
 
 def BaseSpeed(speed):
     global SPEED
+    global currentRightSpeed
+    global currentLeftSpeed
     SPEED = speed
-    L_Speed(SPEED)
-    R_Speed(SPEED)
+    currentRightSpeed = speed
+    currentLeftSpeed = speed
+    sendCommand()
+
 
 def GetSpeed():
     global SPEED

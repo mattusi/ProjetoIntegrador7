@@ -81,10 +81,10 @@ while True:
         Direction(int((middle - 320)/float(sys.argv[1])))
     else:
         start_height -= 5
-	    start_height = start_height % h
+        start_height = start_height % h
         no_points_count += 1
-	    Speed -= 0.1
-	    BaseSpeed(Speed)
+        Speed -= 0.1
+        BaseSpeed(Speed)
         if Speed <= 0:
             break        
 

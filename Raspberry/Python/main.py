@@ -62,7 +62,7 @@ while True:
 
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB) # Drawing color points requires RGB image
     # ret, thresh = cv2.threshold(frame, 105, 255, cv2.THRESH_BINARY)
-    tresh = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
+    thresh = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
 
     signed_thresh = thresh[start_height].astype(np.int16) # select only one row
     diff = np.diff(signed_thresh)   #The derivative of the start_height line

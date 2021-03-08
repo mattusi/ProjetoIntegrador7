@@ -38,7 +38,7 @@ signal.signal(signal.SIGINT, signal_handler)
 frames = [] # stores the video sequence for the demo
 
 # Video capture parameters
-(w, h) = (640,240)  # Resolution
+(w, h) = (640,480)  # Resolution
 bytesPerFrame = w * h
 fps = 40 # setting to 250 will request the maximum framerate possible
 

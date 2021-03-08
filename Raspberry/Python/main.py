@@ -14,10 +14,23 @@ Speed = 50
 MotorsSetup()
 BaseSpeed(Speed)
 
+def cleanup_finish():
+    cameraProcess.terminate()
+    MotorsStop()
+    print("Writing frames to disk...")
+    out = cv2.VideoWriter("drive_test.avi", cv2.cv.CV_FOURCC(*"MJPG"), 5, (w,h))
+
+    for frame in frames:
+        out.write(frame)
+
+    out.release()
+
 def signal_handler(sig, frame):
     print('You pressed Ctrl+C!')
     cleanup_finish()
     sys.exit(0)
+
+
 
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -107,16 +120,6 @@ while True:
 
 cleanup_finish()
 
-def cleanup_finish():
-    cameraProcess.terminate()
-    MotorsStop()
-    print("Writing frames to disk...")
-    out = cv2.VideoWriter("drive_test.avi", cv2.cv.CV_FOURCC(*"MJPG"), 5, (w,h))
-
-    for frame in frames:
-        out.write(frame)
-
-    out.release()
 def signal_handler(sig, frame):
         print('Stop Everything!')
         cleanup_finish()

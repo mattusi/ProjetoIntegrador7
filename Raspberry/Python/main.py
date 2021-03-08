@@ -18,7 +18,7 @@ def cleanup_finish():
     cameraProcess.terminate()
     MotorsStop()
     print("Writing frames to disk...")
-    out = cv2.VideoWriter("drive_test.avi", cv2.cv.CV_FOURCC(*"MJPG"), 5, (w,h))
+    out = cv2.VideoWriter("drive_test.avi", cv2.CV_FOURCC(*"MJPG"), 5, (w,h))
 
     for frame in frames:
         out.write(frame)

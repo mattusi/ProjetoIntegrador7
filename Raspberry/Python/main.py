@@ -83,6 +83,7 @@ while True:
 
         print(int((middle-320)/int(sys.argv[1])))
         Direction(int((middle - 320)/float(sys.argv[1])))
+        cv2.imshow('preview', frame_rgb)
     else:
         start_height -= 5
         start_height = start_height % h

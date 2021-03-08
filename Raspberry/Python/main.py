@@ -40,7 +40,7 @@ frames = [] # stores the video sequence for the demo
 # Video capture parameters
 (w, h) = (640,480)  # Resolution
 bytesPerFrame = w * h
-fps = 40 # setting to 250 will request the maximum framerate possible
+fps = 60 # setting to 250 will request the maximum framerate possible
 
 lateral_search = 20 # number of pixels to search the line border
 start_height = h - 5 # Scan index row 235
@@ -50,7 +50,7 @@ start_height = h - 5 # Scan index row 235
 #  "--timeout 0" specifies continuous video
 #  "--luma" discards chroma channels, only luminance is sent through the pipeline
 # see "raspividyuv --help" for more information on the parameters
-videoCmd = "raspividyuv -w "+str(w)+" -h "+str(h)+" --output - --timeout 0 -vs -co 50 -br 50 --framerate "+str(fps)+" --luma"
+videoCmd = "raspividyuv -w "+str(w)+" -h "+str(h)+" --output - --timeout 0 -vs -co 50 -br 50 --framerate "+str(fps)+" --luma --nopriview"
 videoCmd = videoCmd.split() # Popen requires that each parameter is a separate string
 
 cameraProcess = sp.Popen(videoCmd, stdout = sp.PIPE, bufsize=0) # start the camera
@@ -77,7 +77,7 @@ while True:
 
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB) # Drawing color points requires RGB image
     # ret, thresh = cv2.threshold(frame, 105, 255, cv2.THRESH_BINARY)
-    thresh = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
+    thresh = cv2.adaptiveThreshold(frame_rgb,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
 
     signed_thresh = thresh[start_height].astype(np.int16) # select only one row
     diff = np.diff(signed_thresh)   #The derivative of the start_height line

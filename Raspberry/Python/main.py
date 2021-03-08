@@ -16,6 +16,7 @@ BaseSpeed(Speed)
 
 def signal_handler(sig, frame):
     print('You pressed Ctrl+C!')
+    cleanup_finish()
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)

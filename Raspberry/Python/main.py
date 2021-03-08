@@ -50,7 +50,7 @@ start_height = h - 5 # Scan index row 235
 #  "--timeout 0" specifies continuous video
 #  "--luma" discards chroma channels, only luminance is sent through the pipeline
 # see "raspividyuv --help" for more information on the parameters
-videoCmd = "raspividyuv -w "+str(w)+" -h "+str(h)+" --output - --timeout 0 -vs -co 50 -br 50 --framerate "+str(fps)+" --luma --nopreview"
+videoCmd = "raspividyuv -w "+str(w)+" -h "+str(h)+" --output - --timeout 0 -vs -co 50 -br 50 --framerate "+str(fps)+" --luma"
 videoCmd = videoCmd.split() # Popen requires that each parameter is a separate string
 
 cameraProcess = sp.Popen(videoCmd, stdout = sp.PIPE, bufsize=0) # start the camera

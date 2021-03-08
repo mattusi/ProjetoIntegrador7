@@ -38,7 +38,7 @@ start_height = h - 5 # Scan index row 235
 videoCmd = "raspividyuv -w "+str(w)+" -h "+str(h)+" --output - --timeout 0 -vs -co 50 -br 50 --framerate "+str(fps)+" --luma --nopreview"
 videoCmd = videoCmd.split() # Popen requires that each parameter is a separate string
 
-cameraProcess = sp.Popen(videoCmd, stdout = sp.PIPE) # start the camera
+cameraProcess = sp.Popen(videoCmd, stdout = sp.PIPE, bufsize=0) # start the camera
 atexit.register(cameraProcess.terminate) # this closes the camera process in case the python scripts exits unexpectedly
 
 # wait for the first frame and discard it (only done to measure time more accurately)

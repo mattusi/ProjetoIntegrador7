@@ -32,6 +32,7 @@ while True:
 		# the bounding box surrounding the barcode on the image
 	    (x, y, w, h) = barcode.rect
 	    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        print(x, y)
 		# the barcode data is a bytes object so if we want to draw it
 		# on our output image we need to convert it to a string first
 	    barcodeData = barcode.data.decode("utf-8")
@@ -48,7 +49,6 @@ while True:
 		    csv.flush()
 		    found.add(barcodeData)
     cv2.imshow("Barcode Scanner", frame)
-    print(x, y)
     key = cv2.waitKey(1) & 0xFF
  
 	# if the `q` key was pressed, break from the loop

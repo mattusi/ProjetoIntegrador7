@@ -32,7 +32,8 @@ while True:
 		# the bounding box surrounding the barcode on the image
 	    (x, y, w, h) = barcode.rect
 	    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        print(x, y)
+        center = "x: " + str(x - w/2) + "y: " + str(y + h/2)
+        print(center)
 		# the barcode data is a bytes object so if we want to draw it
 		# on our output image we need to convert it to a string first
 	    barcodeData = barcode.data.decode("utf-8")

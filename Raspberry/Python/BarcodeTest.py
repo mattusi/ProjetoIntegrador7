@@ -48,6 +48,7 @@ while True:
 		    csv.flush()
 		    found.add(barcodeData)
     cv2.imshow("Barcode Scanner", frame)
+    print(x, y)
     key = cv2.waitKey(1) & 0xFF
  
 	# if the `q` key was pressed, break from the loop

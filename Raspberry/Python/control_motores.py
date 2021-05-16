@@ -53,7 +53,7 @@ def BaseSpeed(speed):
 def FollowLine(Speed):
     sendCommand = "L-" + str(Speed)
     print(sendCommand)
-    ser.write(sendCommand.encode('ascii'))
+    ser.write((sendCommand + '\r\n').encode())
 
 
 def GetSpeed():
@@ -70,4 +70,4 @@ def sendCommand():
     rightInt = int(currentRightSpeed)
     sendCommand = str(leftInt) + "-" + str(rightInt)
     print(sendCommand)
-    ser.write(sendCommand.encode('ascii'))
+    ser.write((sendCommand + '\r\n').encode())

@@ -10,6 +10,9 @@ def MotorsSetup():
     ser.flushInput()
     ser.close()
     ser.open()
+
+def MotorsClose():
+    ser.close()
     
 def L_Speed(speed):
     global currentRightSpeed
@@ -47,19 +50,24 @@ def BaseSpeed(speed):
     currentLeftSpeed = speed
     sendCommand()
 
+def FollowLine(Speed):
+    sendCommand = "L-" + str(Speed)
+    print(sendCommand)
+    ser.write(sendCommand.encode('ascii'))
+
 
 def GetSpeed():
     global SPEED
     return SPEED
 
 def MotorsStop():
-    ser.write('0a0'.encode('ascii'))
+    ser.write('0-0'.encode('ascii'))
 
 def sendCommand():
     global currentRightSpeed
     global currentLeftSpeed
     leftInt = int(currentLeftSpeed)
     rightInt = int(currentRightSpeed)
-    sendCommand = str(leftInt) + "a" + str(rightInt)
+    sendCommand = str(leftInt) + "-" + str(rightInt)
     print(sendCommand)
     ser.write(sendCommand.encode('ascii'))

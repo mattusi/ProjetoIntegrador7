@@ -15,6 +15,7 @@ char receivedChars[numChars];   // an array to store the received data
 int moveInts[2];
 boolean newData = false;
 boolean keepFolloingLine = false;
+int SPEED; 
 
 int leftValue;  // variable to store the left sensor value
 int rightValue;  // variable to store the right sensor value
@@ -23,7 +24,6 @@ int leftSpeed;  // variable used to store the leftMotor speed
 int rightSpeed;  // variable used to store the rightMotor speed
 
 #define LINETHRESHOLD 900
-#define SPEED 90  // Set to any number from 0 - 100.
 #define Kp 0.129
 
 float error;
@@ -38,8 +38,11 @@ void loop(void) {
   // if there is data coming in on the Serial monitor, do something with it.
   recvWithEndMarker();
   if (newData == true) {
-    if (strcmp(receivedChars,"L") == 0) {
+    if (strstr(receivedChars, "L")) {
+      updateSpeed(receivedChars);
+      
       keepFolloingLine = true;
+      Serial.println("Folloing line");
     } else {
       keepFolloingLine = false;
       processString("-", receivedChars);
@@ -110,32 +113,44 @@ void moveBySerial(int left, int right) {
 
 void followLine(void) {
   if (keepFolloingLine) {
-    Serial.print("Folloing line");
-  // Read the sensors
-  leftValue = left.read();
-  rightValue = right.read();
-  error = leftValue - rightValue - 6;
-
-  // Print the sensors values
-  Serial.print(leftValue);
-  Serial.print("\t");  // tab character
-  Serial.print(rightValue);
-  Serial.print("\t");
-  Serial.print(error);
-  Serial.println();   // new line
-
-
-  direct = error * Kp;
-  leftSpeed = SPEED - direct;
-  rightSpeed = SPEED + direct;
-  // run motors given the control speeds above
-  motors.leftDrive(leftSpeed, FORWARD);
-  motors.rightDrive(rightSpeed, FORWARD);
-
-  delay(0);  // add a delay to decrease sensitivity.
+    // Read the sensors
+    leftValue = left.read();
+    rightValue = right.read();
+    error = leftValue - rightValue - 6;
+  
+    // Print the sensors values
+    //Serial.print(leftValue);
+    //Serial.print("\t");  // tab character
+    //Serial.print(rightValue);
+    //Serial.print("\t");
+    //Serial.print(error);
+    //Serial.println();   // new line
+  
+  
+    direct = error * Kp;
+    leftSpeed = SPEED - direct;
+    rightSpeed = SPEED + direct;
+    // run motors given the control speeds above
+    motors.leftDrive(leftSpeed, FORWARD);
+    motors.rightDrive(rightSpeed, FORWARD);
+  
+    delay(0);  // add a delay to decrease sensitivity.
   }
 }
 
+void updateSpeed(char* data) {
+  char* d = strtok(data, "-");
+  int i = 0;
+  while (d != NULL) {
+    Serial.println(d);
+    int moveSpeedInt = atoi(d);
+    SPEED = moveSpeedInt;
+    i++;
+    d = strtok(NULL, "-");
+    }
+  Serial.println(SPEED);
+  
+}
 
 void processString(char* delimiter, char* data){
     Serial.println(data);

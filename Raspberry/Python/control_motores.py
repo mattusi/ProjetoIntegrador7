@@ -1,7 +1,7 @@
 import serial
 
 SPEED = 10
-ser = serial.Serial('/dev/ttyS0')
+ser = serial.Serial('/dev/ttyS0', 9600)
 currentLeftSpeed = 0
 currentRightSpeed = 0
 

@@ -53,7 +53,7 @@ while True:
             print("Currently at stop", SequenceToFollow[nextStopIndex])
             time.sleep(10.0)
             nextStopIndex = nextStopIndex + 1
-            if nexStopIndex > len(SequenceToFollow):
+            if nextStopIndex > len(SequenceToFollow):
                 nextStopIndex = 0
             FollowLine(50)
 

@@ -8,7 +8,7 @@ import cv2
 
 from control_motores import *
 
-SequenceToFollow = ["A", "1", "C", "2", "B", "3"]
+SequenceToFollow = ["A", "C", "B"]
 Speed = 50
 
 MotorsSetup()
@@ -47,6 +47,7 @@ while True:
             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
         
         print(barcodeData)
+        print(h)
         #TODO: Implement PID control for stoping
         if barcodeData == SequenceToFollow[nextStopIndex]:
             FollowLine(0)

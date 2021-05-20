@@ -43,12 +43,12 @@ while True:
         print(h)
         #TODO: Implement PID control for stoping
         if barcodeData == SequenceToFollow[nextStopIndex]:
-            if h > 90:
+            if h > 0:
                 FollowLine(0)
                 print("Currently at stop", SequenceToFollow[nextStopIndex])
                 time.sleep(10.0)
                 nextStopIndex = nextStopIndex + 1
-                if nextStopIndex > len(SequenceToFollow):
+                if nextStopIndex > (len(SequenceToFollow) - 1):
                     nextStopIndex = 0
                 FollowLine(50)
 

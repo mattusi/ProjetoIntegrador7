@@ -50,13 +50,14 @@ while True:
         print(h)
         #TODO: Implement PID control for stoping
         if barcodeData == SequenceToFollow[nextStopIndex]:
-            FollowLine(0)
-            print("Currently at stop", SequenceToFollow[nextStopIndex])
-            time.sleep(10.0)
-            nextStopIndex = nextStopIndex + 1
-            if nextStopIndex > len(SequenceToFollow):
-                nextStopIndex = 0
-            FollowLine(50)
+            if h > 90:
+                FollowLine(0)
+                print("Currently at stop", SequenceToFollow[nextStopIndex])
+                time.sleep(10.0)
+                nextStopIndex = nextStopIndex + 1
+                if nextStopIndex > len(SequenceToFollow):
+                    nextStopIndex = 0
+                FollowLine(50)
 
 		
     cv2.imshow("Barcode Scanner", frame)
@@ -67,7 +68,6 @@ while True:
 	    break
 # close the output CSV file do a bit of cleanup
 print("[INFO] cleaning up...")
-csv.close()
 cv2.destroyAllWindows()
 vs.stop()
 MotorsClose()

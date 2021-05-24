@@ -21,7 +21,7 @@ void atualiza_Status_Rota() {
 
       //Serial.print("[HTTP] begin...\n");
 
-     http.begin(host+"/atualiza_status_rota.php?prota_id="+prota_id+"&fk_rstatus_id="+String(rota_st)+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&fk_rstatus_id=2&api_key=tPmAT5Ab3j7F9
+     http.begin(host+"/atualiza_status_rota.php?prota_id="+prota_id+"&fk_rstatus_id="+prota_st+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&fk_rstatus_id=2&api_key=tPmAT5Ab3j7F9
 
       Serial.print("[HTTP] GET...\n");
       // iniciar conexão e enviar cabeçalho HTTP

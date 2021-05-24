@@ -32,6 +32,6 @@ String veic_st = "2"; // Status do veiculo
 
 String prota_id = "2"; // ID do plano de rota em curso
 
-String rota_st = "2"; // Status da rota
+String prota_st = "2"; // Status da rota
 
 #endif

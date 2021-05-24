@@ -21,7 +21,7 @@ void atualiza_Status_Rota() {
 
       //Serial.print("[HTTP] begin...\n");
 
-     http.begin(host+"/atualiza_status_rota.php?prota_id="+prota_id+"&fk_rstatus_id="+String(fk_rstatus_id)+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&fk_rstatus_id=2&api_key=tPmAT5Ab3j7F9
+     http.begin(host+"/atualiza_status_rota.php?prota_id="+prota_id+"&fk_rstatus_id="+String(rota_st)+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&fk_rstatus_id=2&api_key=tPmAT5Ab3j7F9
 
       Serial.print("[HTTP] GET...\n");
       // iniciar conexão e enviar cabeçalho HTTP
@@ -52,7 +52,7 @@ void atualiza_Status_Veiculo() {
 
       //Serial.print("[HTTP] begin...\n");
 
-     http.begin(host+"/atualiza_status_veiculo.php?veic_id="+veic_id+"&fk_ponto="+String(fk_ponto)+"&fk_vstatus_id="+String(fk_vstatus_id)+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_veiculo.php?veic_id=1&fk_ponto=2&fk_vstatus_id=1&api_key=tPmAT5Ab3j7F9
+     http.begin(host+"/atualiza_status_veiculo.php?veic_id="+veic_id+"&fk_ponto="+veic_pt+"&fk_vstatus_id="+veic_st+"&api_key="+apiKeyValue+""); // http://becsenac.life/api/atualiza_status_veiculo.php?veic_id=1&fk_ponto=2&fk_vstatus_id=1&api_key=tPmAT5Ab3j7F9
 
       Serial.print("[HTTP] GET...\n");
       // iniciar conexão e enviar cabeçalho HTTP
@@ -84,7 +84,7 @@ void recebe_Rota() {
 
       //Serial.print("[HTTP] begin...\n");
 
-     http.begin(host+"/recebe_rota.php?veic_id="+veic_id+"&api_key="+apiKeyValue+ ""); // http://becsenac.life/api/recebe_rota.php?veic_id=1&api_key=tPmAT5Ab3j7F9     
+     http.begin(host+"/recebe_rota.php?veic_id="+veic_id+"&veic_pt="+veic_pt+"&veic_st="+veic_st+"&api_key="+apiKeyValue+ ""); // http://becsenac.life/api/recebe_rota.php?veic_id=1&veic_pt=1&veic_st=1&api_key=tPmAT5Ab3j7F9 
 
       //Serial.print("[HTTP] GET...\n");
       // iniciar conexão e enviar cabeçalho HTTP

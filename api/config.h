@@ -26,4 +26,12 @@ String host = "http://becsenac.life/api";
 
 String veic_id = "1"; // Define o ID do Veiculo no DB.
 
+String veic_pt = "2"; // Ponto que o veiculo está ou passou
+
+String veic_st = "2"; // Status do veiculo
+
+String prota_id = "2"; // ID do plano de rota em curso
+
+String rota_st = "2"; // Status da rota
+
 #endif

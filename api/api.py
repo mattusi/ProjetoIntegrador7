@@ -7,8 +7,8 @@
 
 import requests
 
-###### Recebe as rotas >>>> envia ponto atual e estado do veiculo  >> retorno = prota_id, fk_partida e fk_chegada tabela plano_de_rota #######
-print("Recebe as rota")
+###### Recebe a rota >>>> envia ponto atual e estado do veiculo  >> retorno = prota_id, fk_partida e fk_chegada tabela plano_de_rota #######
+print("Recebe a rota")
 
 
 #   http://becsenac.life/api/recebe_rota.php?veic_id=1&veic_pt=1&veic_st=1&api_key=tPmAT5Ab3j7F9

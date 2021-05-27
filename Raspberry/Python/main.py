@@ -5,10 +5,14 @@ import datetime
 import imutils
 import time
 import cv2
+import threading
 
 from control_motores import *
+from APIGet import *
 
 SequenceToFollow = ["A", "C", "B"]
+currentStop = ""
+direction = 1
 Speed = 50
 
 MotorsSetup()
@@ -19,6 +23,14 @@ print(cv2.__version__) #check if cv2 is installed
 print("[INFO] Starting video stream...")
 vs = VideoStream(usePiCamera=True).start()
 time.sleep(2.0)
+
+print("[INFO] Getting API Routes...")
+def fetchPeriodcaly():
+    global currentStop
+    global direction
+    global SequenceToFollow
+    SequenceToFollow = updateRoute(currentStop=currentStop, direction=direction)
+    threading.Timer(5, fetchPeriodcaly).start()
 
 nextStopIndex = 0
 time.sleep(5.0)
@@ -45,7 +57,9 @@ while True:
         if barcodeData == SequenceToFollow[nextStopIndex]:
             if h > 0:
                 FollowLine(0)
-                print("Currently at stop", SequenceToFollow[nextStopIndex])
+                myStop = SequenceToFollow[nextStopIndex]
+                currentStop = myStop
+                print("Currently at stop", myStop)
                 time.sleep(10.0)
                 nextStopIndex = nextStopIndex + 1
                 if nextStopIndex > (len(SequenceToFollow) - 1):

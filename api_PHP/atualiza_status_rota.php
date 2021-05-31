@@ -7,9 +7,7 @@
 
     $api_key= $_GET['api_key'];
 
-        // /atualiza_status_rota.php?veic_id="+veic_id+"&fk_vstatus_id="+String(fk_vstatus_id)+"&api_key="+apiKeyValue+ "
-
-        // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&prota_st=2&api_key=tPmAT5Ab3j7F9
+    // http://becsenac.life/api/atualiza_status_rota.php?prota_id=1&prota_st=2&api_key=tPmAT5Ab3j7F9
 
     if( $api_key =='tPmAT5Ab3j7F9'){ 
 

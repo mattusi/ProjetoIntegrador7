@@ -43,6 +43,8 @@ import requests
 ###### Recebe a rota >>>> envia ponto atual e estado do veiculo  >> retorno = prota_id, fk_partida e fk_chegada tabela plano_de_rota #######
 print("Recebe a rota")
 
+# envia x,y,z  x = veic_id  y = fk_ponto (ponto onde se encontra o veiculo ver Tabela ponto) z = fk_vstatus_id (estado atual do veiculo ver Tabela veic_status)
+# retorno  x,y,z     x = prota_id   y = fk_partida  z = fk_chegada   se retorno = 0 sem rotas disponiveis
 
 #   http://becsenac.life/api/recebe_rota.php?veic_id=1&veic_pt=1&veic_st=1&api_key=tPmAT5Ab3j7F9
 
@@ -54,10 +56,6 @@ print(r.status_code)     # To print http response code
 print(r.text)            # To print response 
 
 print("  ")
-
-# envia x,y,z  x = veic_id  y = fk_ponto (ponto onde se encontra o veiculo ver Tabela ponto) z = fk_vstatus_id (estado atual do veiculo ver Tabela veic_status)
-# retorno  x,y,z     x = prota_id   y = fk_partida  z = fk_chegada   se retorno = 0 sem rotas disponiveis
-
 
 ###### Atualiza o estado da rota ########
 print("Atualiza o estado da rota")
